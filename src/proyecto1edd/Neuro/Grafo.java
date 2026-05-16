@@ -13,6 +13,22 @@ public class Grafo {
     
    public Grafo(){
        this.primero = null;
+      
    }
-    
+     public void insertar(String dato) {
+
+        Neurona nuevo = new Neurona(dato);
+
+        if (primero == null) {
+            primero = nuevo;
+        } else {
+            Neurona aux = primero;
+
+            while (aux.sig != null) {
+                aux = aux.sig;
+            }
+            aux.sig = nuevo;
+        }
+
+    }
 }
