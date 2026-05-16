@@ -47,4 +47,15 @@ public class Grafo {
             }
         }
      }
+      public Neurona buscar(String dato){
+        Neurona aux = primero;
+        while(aux !=null && !aux.id.equals(dato)){
+        aux = aux.sig;    
+        }
+        return aux;
+            
+                
+   
+        
+    }
 }
