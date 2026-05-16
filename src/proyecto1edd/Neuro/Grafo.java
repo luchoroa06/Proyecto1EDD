@@ -31,4 +31,20 @@ public class Grafo {
         }
 
     }
+     public void eliminar(String dato) {
+        if (primero != null) {
+            if(primero.id.equals(dato)){
+                primero = primero.sig;
+                return;
+            }
+            Neurona aux = primero;
+
+            while (aux.sig != null && !aux.sig.id.equals(dato)) {
+                aux = aux.sig;
+            }
+            if (aux.sig != null) {
+                aux.sig = aux.sig.sig;
+            }
+        }
+     }
 }
