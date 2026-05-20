@@ -12,13 +12,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class Agregar extends javax.swing.JFrame {
     static Grafo grafo;
-    static HashTable hash;
+    static MostarHash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Agregar.class.getName());
 
     /**
      * Creates new form Agregar
      */
-    public Agregar(Grafo grafo, HashTable hash) {
+    public Agregar(Grafo grafo, MostarHash hash) {
         initComponents();
         this.setVisible(true);
         this.grafo = grafo;

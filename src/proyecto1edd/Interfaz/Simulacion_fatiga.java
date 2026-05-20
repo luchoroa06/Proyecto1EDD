@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -12,13 +13,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class Simulacion_fatiga extends javax.swing.JFrame {
     static Grafo grafo;
-    static HashTable hash;
+    static Hash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Simulacion_fatiga.class.getName());
 
     /**
      * Creates new form Simulacion_fatiga
      */
-    public Simulacion_fatiga(Grafo grafo, HashTable hash) {
+    public Simulacion_fatiga(Grafo grafo, Hash hash) {
         initComponents();
         this.grafo = grafo;
         this.hash = hash;
@@ -62,7 +63,7 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 690));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

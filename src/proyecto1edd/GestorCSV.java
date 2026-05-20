@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import proyecto1edd.Neuro.Grafo;
+import proyecto1edd.Neuro.Neurona;
 
 /**
  *
@@ -20,32 +21,37 @@ public class GestorCSV {
 
     /**
      * Lee un archivo CSV y construye el grafo Formato esperado:
-     *ID_Neurona_Origen, ID_Neurona_Destino, distancia_sináptica, ID_Neurotransmisor, coheficiente_eficiencia_sináptica.
-     * ejem 1,2,0.85,GLU, 1
+     * ID_Neurona_Origen, ID_Neurona_Destino, distancia_sináptica,
+     * ID_Neurotransmisor, coheficiente_eficiencia_sináptica. ejem 1,2,0.85,GLU,
+     * 1
+     *
      * @param archivo Archivo CSV a leer
      * @param grafo Grafo donde se insertarán los datos
      */
-
     public void leerArchivo(File archivo, Grafo grafo) {
         String linea;
         String separador = ",";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {     
-            
+        int con = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(separador);
+                System.out.println(linea);
+                if (con != 0) {
+                    String[] datos = linea.split(separador);
 
-                if (datos.length >= 5) {
-                    int s1 = Integer.parseInt(datos[0].trim());  //
-                    int s2 = Integer.parseInt(datos[1].trim());     //
-                    float s3 = Integer.parseInt(datos[2].trim());   //
-                    String s4 = datos[3].trim();    //
-                    int s5 = Integer.parseInt(datos[4].trim()); //
-                    grafo.insertar(s1);                     
-                    grafo.insertar(s2);
-                    grafo.insertarArista(s1, s2, s3, s4, s5);
-
+                    if (datos.length >= 5) {
+                        int s1 = Integer.parseInt(datos[0].trim());  //
+                        int s2 = Integer.parseInt(datos[1].trim());     //
+                        float s3 = Float.parseFloat(datos[2].trim());   //
+                        String s4 = datos[3].trim();    //
+                        int s5 = Integer.parseInt(datos[4].trim()); //
+                        grafo.insertar(s1);
+                        grafo.insertar(s2);
+                        grafo.insertarArista(s1, s2, s3, s4, s5);
+                        
+                    }
+                }else{
+                    con += 1;
                 }
             }
 
@@ -53,6 +59,7 @@ public class GestorCSV {
 
         } catch (Exception e) {
             System.out.println("Error al leer: " + e.getMessage());
+            System.out.println(javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -66,15 +73,17 @@ public class GestorCSV {
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo, false))) {
 
-            Vertice aux = grafo.;
+            Neurona aux = grafo.primero;
             while (aux != null) {
-                Nodo aux2 = aux.aristas.primero;
+                NodoLista aux2 = aux.Lista_sinapsis.primero;
                 while (aux2 != null) {
-                    // Escribe cada arista como una línea: proteina1,proteina2,peso
-                    String linea = String.format("%s,%s,%d",
-                            aux.proteina,
-                            aux2.dato,
-                            aux2.peso);
+                    String linea = String.format("%d,%d,%f,%s,%d", //int origen, int destino, float distancia, String neurotransmisor, int eficiencia
+                            aux2.sinapsis.ID_Neurona_Origen.id,
+                            aux2.sinapsis.ID_Neurona_Destino.id,
+                            aux2.sinapsis.distancia_sináptica,
+                            aux2.sinapsis.ID_Neurotransmisor,
+                            aux2.sinapsis.eficiencia_sináptica
+                    );
 
                     pw.println(linea);
                     aux2 = aux2.sig;
@@ -89,6 +98,4 @@ public class GestorCSV {
             javax.swing.JOptionPane.showMessageDialog(null, "Error al guardar el archivo");
         }
     }
-    }
-
 }

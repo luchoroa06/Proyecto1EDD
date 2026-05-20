@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -12,13 +13,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class Dijkstra extends javax.swing.JFrame {
     static Grafo grafo;
-    static HashTable hash;
+    static Hash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dijkstra.class.getName());
 
     /**
      * Creates new form Dijkstra
      */
-    public Dijkstra(Grafo grafo, HashTable hash) {
+    public Dijkstra(Grafo grafo, Hash hash) {
         initComponents();
         this.setVisible(true);
         this.grafo = grafo;
@@ -65,11 +66,11 @@ public class Dijkstra extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
         );
 
         pack();

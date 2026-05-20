@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -12,13 +13,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class DFS_BFS extends javax.swing.JFrame {
     static Grafo grafo;
-    static HashTable hash;
+    static Hash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DFS_BFS.class.getName());
 
     /**
      * Creates new form DFS_BFS
      */
-    public DFS_BFS(Grafo grafo, HashTable hash) {
+    public DFS_BFS(Grafo grafo, Hash hash) {
         initComponents();
         this.grafo = grafo;
         this.hash = hash;

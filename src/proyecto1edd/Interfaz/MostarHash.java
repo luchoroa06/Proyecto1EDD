@@ -10,15 +10,15 @@ import proyecto1edd.Neuro.Grafo;
  *
  * @author LuchoPC
  */
-public class HashTable extends javax.swing.JFrame {
+public class MostarHash extends javax.swing.JFrame {
     static Grafo grafo;
-    static HashTable hash;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HashTable.class.getName());
+    static MostarHash hash;
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MostarHash.class.getName());
 
     /**
      * Creates new form HashTable
      */
-    public HashTable(Grafo grafo, HashTable hash) {
+    public MostarHash(Grafo grafo, MostarHash hash) {
         initComponents();
         this.setVisible(true);
         this.grafo = grafo;
@@ -60,11 +60,15 @@ public class HashTable extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,7 +96,7 @@ public class HashTable extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new HashTable(grafo, hash).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new MostarHash(grafo, hash).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
