@@ -9,6 +9,53 @@ package proyecto1edd.Neuro;
  * @author LuchoPC
  */
 public class Grafo {
+    Neurona primero;
     
-    
+   public Grafo(){
+       this.primero = null;
+      
+   }
+     public void insertar(String dato) {
+
+        Neurona nuevo = new Neurona(dato);
+
+        if (primero == null) {
+            primero = nuevo;
+        } else {
+            Neurona aux = primero;
+
+            while (aux.sig != null) {
+                aux = aux.sig;
+            }
+            aux.sig = nuevo;
+        }
+
+    }
+     public void eliminar(String dato) {
+        if (primero != null) {
+            if(primero.id.equals(dato)){
+                primero = primero.sig;
+                return;
+            }
+            Neurona aux = primero;
+
+            while (aux.sig != null && !aux.sig.id.equals(dato)) {
+                aux = aux.sig;
+            }
+            if (aux.sig != null) {
+                aux.sig = aux.sig.sig;
+            }
+        }
+     }
+      public Neurona buscar(String dato){
+        Neurona aux = primero;
+        while(aux !=null && !aux.id.equals(dato)){
+        aux = aux.sig;    
+        }
+        return aux;
+            
+                
+   
+        
+    }
 }
