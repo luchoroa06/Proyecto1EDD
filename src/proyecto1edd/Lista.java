@@ -9,21 +9,19 @@ package proyecto1edd;
  * @author LuchoPC
  */
 public class Lista {
-
-    NodoLista primero;  //Primero nodo de la lista de aristas
+    NodoLista primero;       //Primero nodo de la lista de aristas
     int t;              // Tamaño de la lista
-
-    /**
-     * constructor que crea la lista vacia
-     */
+/**
+ * constructor que crea la lista vacia
+ */
     public Lista() {
         this.primero = null;
         this.t = 0;
 
     }
 
-    public void insertar(Sinapsis sinapsis) {
-        NodoLista nuevo = new NodoLista(sinapsis);
+    public void insertar(int dato, String nombre_neurona) {
+        NodoLista nuevo = new NodoLista(dato, nombre_neurona);
         if (primero == null) {          //por si la lsita esta vacia
             primero = nuevo;
             t++;
@@ -38,18 +36,21 @@ public class Lista {
         }
 
     }
+}   
+    /**
 
-    public void eliminar(Sinapsis sinapsis) {
+
+    public void eliminar(String dato) {
         if (primero != null) {
             NodoLista aux = primero;
-            if (aux.sinapsis.equals(sinapsis)) {        // Si es el primero
+            if (aux.dato.equals(dato)) {        // Si es el primero
                 primero = primero.sig;
                 primero.ant = null;
                 t--;
-
+                
                 return;
             }
-            while (aux.sig != null && !aux.sig.sinapsis.equals(sinapsis)) {
+            while (aux.sig != null && !aux.sig.dato.equals(dato)) {
                 aux = aux.sig;                  //busca el nodo a eliminar
             }
             if (aux.sig != null) {
@@ -60,11 +61,12 @@ public class Lista {
 
         }
     }
+ 
 
-    public NodoLista buscar(Sinapsis sinapsis) {
+    public NodoLista buscar(String dato) {
         if (primero != null) {
             NodoLista aux = primero;
-            while (aux != null && !aux.sinapsis.equals(sinapsis)) {
+            while (aux != null && !aux.dato.equals(dato)) {
                 aux = aux.sig;
 
             }
@@ -73,16 +75,17 @@ public class Lista {
         return null;
     }
 
+
     public String mostrar() {
         String salida = "";
         NodoLista aux = primero;
 
         while (aux != null) {
-            salida += "[" + aux.sinapsis.ID_Neurona_Destino.id + "] ";
+            salida += "[" + aux.dato + "] ";
             aux = aux.sig;
         }
-        return salida;
+        return salida; 
     }
 
- }
-
+}
+**/

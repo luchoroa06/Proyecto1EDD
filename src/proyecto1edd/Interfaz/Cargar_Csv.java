@@ -4,9 +4,6 @@
  */
 package proyecto1edd.Interfaz;
 
-import java.io.File;
-import proyecto1edd.GestorCSV;
-import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -14,15 +11,14 @@ import proyecto1edd.Neuro.Grafo;
  * @author LuchoPC
  */
 public class Cargar_Csv extends javax.swing.JFrame {
-
     static Grafo grafo;
-    static Hash hash;
+    static HashTable hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Cargar_Csv.class.getName());
 
     /**
      * Creates new form Cargar_Csv
      */
-    public Cargar_Csv(Grafo grafo, Hash hash) {
+    public Cargar_Csv(Grafo grafo, HashTable hash) {
         initComponents();
         this.grafo = grafo;
         this.hash = hash;
@@ -43,7 +39,6 @@ public class Cargar_Csv extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,12 +46,7 @@ public class Cargar_Csv extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("cargar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 80, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -70,17 +60,9 @@ public class Cargar_Csv extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 100, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jButton3.setText("cargar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 780, 80, 40));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 870));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,49 +72,6 @@ public class Cargar_Csv extends javax.swing.JFrame {
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        javax.swing.JFileChooser selector = new javax.swing.JFileChooser();
-
-        // 2. Filtro para que solo se vean archivos .csv
-        javax.swing.filechooser.FileNameExtensionFilter filtro
-                = new javax.swing.filechooser.FileNameExtensionFilter("Archivos CSV", "csv");
-        selector.setFileFilter(filtro);
-
-        // 3. Abrir la ventana
-        int resultado = selector.showOpenDialog(this);
-
-        // 4. Si el usuario acepta, llamamos al lector
-        if (resultado == javax.swing.JFileChooser.APPROVE_OPTION) {
-            File archivoSeleccionado = selector.getSelectedFile();
-            grafo = new Grafo();
-            GestorCSV c = new GestorCSV();
-            c.leerArchivo(archivoSeleccionado, grafo);
-            this.jTextArea1.setText(grafo.mostrar());
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        javax.swing.JFileChooser selector = new javax.swing.JFileChooser();
-
-        // 2. Filtro para que solo se vean archivos .csv
-        javax.swing.filechooser.FileNameExtensionFilter filtro
-                = new javax.swing.filechooser.FileNameExtensionFilter("Archivos CSV", "csv");
-        selector.setFileFilter(filtro);
-
-        // 3. Abrir la ventana
-        int resultado = selector.showOpenDialog(this);
-
-        // 4. Si el usuario acepta, llamamos al lector
-        if (resultado == javax.swing.JFileChooser.APPROVE_OPTION) {
-            File archivoSeleccionado = selector.getSelectedFile();
-            GestorCSV c = new GestorCSV();
-            c.guardarArchivo(archivoSeleccionado, grafo);
-        }
-
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +101,6 @@ public class Cargar_Csv extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

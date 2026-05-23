@@ -6,8 +6,16 @@ package proyecto1edd;
 
 /**
  *
- * @author LuchoPC
+ * @author user
  */
-public class Sinapsis {
+public class NodoHash {
+    Neurotransmisor neurotransmisor;
+    NodoHash siguiente;
     
+public NodoHash(Neurotransmisor neurotransmisor){
+    this.neurotransmisor = neurotransmisor;
+ this.siguiente = null;
+ 
+}
+
 }

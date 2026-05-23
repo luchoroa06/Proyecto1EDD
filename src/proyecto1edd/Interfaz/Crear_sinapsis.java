@@ -4,7 +4,6 @@
  */
 package proyecto1edd.Interfaz;
 
-import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -13,13 +12,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class Crear_sinapsis extends javax.swing.JFrame {
     static Grafo grafo;
-    static Hash hash;
+    static HashTable hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Crear_sinapsis.class.getName());
 
     /**
      * Creates new form Crear_sinapsis
      */
-    public Crear_sinapsis(Grafo grafo, Hash hash) {
+    public Crear_sinapsis(Grafo grafo, HashTable hash) {
         initComponents();
         this.grafo = grafo;
         this.setVisible(true);
@@ -116,7 +115,7 @@ public class Crear_sinapsis extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 660));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 520, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

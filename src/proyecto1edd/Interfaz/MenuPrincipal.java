@@ -4,9 +4,6 @@
  */
 package proyecto1edd.Interfaz;
 
-import proyecto1edd.Hash;
-import static proyecto1edd.Interfaz.Cargar_Csv.grafo;
-import static proyecto1edd.Interfaz.Cargar_Csv.hash;
 import proyecto1edd.Neuro.Grafo;
 
 
@@ -17,13 +14,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     static Grafo grafo;
-    static Hash hash;
+    static HashTable hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuPrincipal.class.getName());
 
     /**
      * Creates new form MenuPrincipal
      */
-    public MenuPrincipal(Grafo grafo, Hash hash) {
+    public MenuPrincipal(Grafo grafo, HashTable hash) {
         initComponents();
         this.setVisible(true);
         this.grafo = grafo;
@@ -54,11 +51,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("CARGAR CSV");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 170, 80));
 
         jButton2.setText("Mostrar grafo");
@@ -112,15 +104,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        //MostrarGrafo m = new MostrarGrafo (grafo, hash);
+        MostrarGrafo m = new MostrarGrafo (grafo, hash);
         
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Cargar_Csv c = new Cargar_Csv(grafo, hash);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
