@@ -4,79 +4,58 @@
  */
 package proyecto1edd.Neuro;
 
-import proyecto1edd.Sinapsis;
-
 /**
  *
  * @author LuchoPC
  */
 public class Grafo {
+    Neurona primero;
+    
+   public Grafo(){
+       this.primero = null;
+      
+   }
+     public void insertar(String dato) {
 
-    public Neurona primero;
+        Neurona nuevo = new Neurona(dato);
 
-    public Grafo() {
-        this.primero = null;
+        if (primero == null) {
+            primero = nuevo;
+        } else {
+            Neurona aux = primero;
 
-    }
-
-    public void insertar(int dato) {
-        if (this.buscar(dato) == null) {
-            Neurona nuevo = new Neurona(dato);
-            if (primero == null) {
-                primero = nuevo;
-            } else {
-                Neurona aux = primero;
-                while (aux.sig != null) {
-                    aux = aux.sig;
-                }
-                aux.sig = nuevo;
+            while (aux.sig != null) {
+                aux = aux.sig;
             }
+            aux.sig = nuevo;
         }
-    }
 
-    public void eliminar(int dato) {
+    }
+     public void eliminar(String dato) {
         if (primero != null) {
-            if (primero.id != dato) {
+            if(primero.id.equals(dato)){
                 primero = primero.sig;
                 return;
             }
             Neurona aux = primero;
 
-            while (aux.sig != null && aux.sig.id != dato) {
+            while (aux.sig != null && !aux.sig.id.equals(dato)) {
                 aux = aux.sig;
             }
             if (aux.sig != null) {
                 aux.sig = aux.sig.sig;
             }
         }
-    }
-
-    public Neurona buscar(int dato) {
+     }
+      public Neurona buscar(String dato){
         Neurona aux = primero;
-        while (aux != null && aux.id != dato) {
-            aux = aux.sig;
+        while(aux !=null && !aux.id.equals(dato)){
+        aux = aux.sig;    
         }
         return aux;
-
-    }
-
-    public void insertarArista(int origen, int destino, float distancia, String neurotransmisor, int eficiencia) {
-        Neurona a = this.buscar(origen);
-        Neurona b = this.buscar(destino);
-        if (a != null && b != null) {
-            Sinapsis s = new Sinapsis(a, b, distancia, neurotransmisor, eficiencia);
-            a.Lista_sinapsis.insertar(s);
-        }
-
-    }
-    public String mostrar() {
-        String salida = "";
-        Neurona aux = primero;
-
-        while (aux != null) {
-            salida += "[" + aux.id + "] ---> " + aux.Lista_sinapsis.mostrar() + "\n";
-            aux = aux.sig;
-        }
-        return salida;
+            
+                
+   
+        
     }
 }

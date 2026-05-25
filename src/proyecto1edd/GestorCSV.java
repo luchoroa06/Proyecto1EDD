@@ -21,37 +21,32 @@ public class GestorCSV {
 
     /**
      * Lee un archivo CSV y construye el grafo Formato esperado:
-     * ID_Neurona_Origen, ID_Neurona_Destino, distancia_sináptica,
-     * ID_Neurotransmisor, coheficiente_eficiencia_sináptica. ejem 1,2,0.85,GLU,
-     * 1
-     *
+     *ID_Neurona_Origen, ID_Neurona_Destino, distancia_sináptica, ID_Neurotransmisor, coheficiente_eficiencia_sináptica.
+     * ejem 1,2,0.85,GLU, 1
      * @param archivo Archivo CSV a leer
      * @param grafo Grafo donde se insertarán los datos
      */
+
     public void leerArchivo(File archivo, Grafo grafo) {
         String linea;
         String separador = ",";
-        int con = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {     
+            
 
             while ((linea = br.readLine()) != null) {
-                System.out.println(linea);
-                if (con != 0) {
-                    String[] datos = linea.split(separador);
+                String[] datos = linea.split(separador);
 
-                    if (datos.length >= 5) {
-                        int s1 = Integer.parseInt(datos[0].trim());  //
-                        int s2 = Integer.parseInt(datos[1].trim());     //
-                        float s3 = Float.parseFloat(datos[2].trim());   //
-                        String s4 = datos[3].trim();    //
-                        int s5 = Integer.parseInt(datos[4].trim()); //
-                        grafo.insertar(s1);
-                        grafo.insertar(s2);
-                        grafo.insertarArista(s1, s2, s3, s4, s5);
-                        
-                    }
-                }else{
-                    con += 1;
+                if (datos.length >= 5) {
+                    int s1 = Integer.parseInt(datos[0].trim());  //
+                    int s2 = Integer.parseInt(datos[1].trim());     //
+                    float s3 = Integer.parseInt(datos[2].trim());   //
+                    String s4 = datos[3].trim();    //
+                    int s5 = Integer.parseInt(datos[4].trim()); //
+                    grafo.insertar(s1);                     
+                    grafo.insertar(s2);
+                    grafo.insertarArista(grafo.buscar(s1), grafo.buscar(s2), s3, s4, s5);
+
                 }
             }
 
@@ -132,4 +127,6 @@ public class GestorCSV {
             System.out.println(javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
+}
+
 }
