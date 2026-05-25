@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
 /**
@@ -12,13 +13,13 @@ import proyecto1edd.Neuro.Grafo;
  */
 public class MostarHash extends javax.swing.JFrame {
     static Grafo grafo;
-    static MostarHash hash;
+    static Hash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MostarHash.class.getName());
 
     /**
      * Creates new form HashTable
      */
-    public MostarHash(Grafo grafo, MostarHash hash) {
+    public MostarHash(Grafo grafo, Hash hash) {
         initComponents();
         this.setVisible(true);
         this.grafo = grafo;
@@ -51,6 +52,11 @@ public class MostarHash extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 440, 270));
 
         jButton1.setText("Mostrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
         jButton2.setText("Atras");
@@ -73,6 +79,17 @@ public class MostarHash extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            this.jTextArea1.setText(this.hash.imprimir());
+            
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
