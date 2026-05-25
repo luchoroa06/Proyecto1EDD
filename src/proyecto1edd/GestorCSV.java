@@ -93,6 +93,40 @@ public class GestorCSV {
             javax.swing.JOptionPane.showMessageDialog(null, "Error al guardar el archivo");
         }
     }
+    public void leerNeurotransmisores(File archivo, Hash hash) {
+        String linea;
+        String separador = ",";
+        int con = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+                if (con != 0) {
+                    String[] datos = linea.split(separador);
+
+                    if (datos.length >= 5) {
+                        String s1 = datos[0].trim();
+                        String s2 = datos[1].trim();
+                        float s4 = Float.parseFloat(datos[3].trim());   //
+                        String s3 = datos[2].trim();    //
+                        String s5 = datos[4].trim();
+                        hash.agregar(s1, s2, s3, s4, s5);
+                        
+                        
+                        
+                    }
+                }else{
+                    con += 1;
+                }
+            }
+
+            System.out.println(hash.imprimir());  // Muestra resultado
+
+        } catch (Exception e) {
+            System.out.println("Error al leer: " + e.getMessage());
+            System.out.println(javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
 
 }

@@ -48,3 +48,27 @@ public void insertar(Neurotransmisor nuevo){
 
         
 }
+public Neurotransmisor buscar(String id ){
+    NodoHash aux = primero;
+    while(aux !=null && !aux.neurotransmisor.ID.equals(id) ){
+    aux = aux.siguiente; 
+    }
+   if(aux != null){
+       return aux.neurotransmisor;
+   }
+   else{
+       return null;
+   }
+}
+
+ public String imprimir(){
+     NodoHash aux = primero;
+     String info = "";
+     while(aux != null){
+         info += aux.neurotransmisor.ID+","+aux.neurotransmisor.nombre+","+aux.neurotransmisor.efecto+","+aux.neurotransmisor.velocidad+","+ aux.neurotransmisor.descripcion+"\n";
+         aux = aux.siguiente;
+     }
+     return info;
+     
+ }
+}

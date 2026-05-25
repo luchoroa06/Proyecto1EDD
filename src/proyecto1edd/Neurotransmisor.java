@@ -9,13 +9,13 @@ package proyecto1edd;
  * @author user
  */
 public class Neurotransmisor {
-    String ID;
-    String nombre;
-    String efecto;
-    int velocidad;
-    String descripcion; 
+ public   String ID;
+ public   String nombre;
+ public   String efecto;
+ public   float velocidad;
+ public   String descripcion; 
     
-public Neurotransmisor (String Id,String nombre, String efecto, int velocidad, String descripcion){
+public Neurotransmisor (String Id,String nombre, String efecto, float velocidad, String descripcion){
     this.ID = Id;
     this.nombre = nombre;
     this.efecto = efecto;
