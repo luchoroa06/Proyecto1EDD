@@ -36,100 +36,153 @@ public class Crear_sinapsis extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jButton6 = new javax.swing.JButton();
+        distancia = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        neurotransmisor = new javax.swing.JButton();
+        origen = new javax.swing.JButton();
+        destino = new javax.swing.JButton();
+        eficiencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Origen");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        distancia.setBackground(new java.awt.Color(13, 110, 253));
+        distancia.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        distancia.setForeground(new java.awt.Color(255, 255, 255));
+        distancia.setText("AGREGAR DISTANCIA");
+        jPanel1.add(distancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 180, 30));
 
-        jButton2.setText("Destino");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        atras.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        atras.setText("ATRAS");
+        atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                atrasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 110, 50));
 
-        jButton3.setText("Distancia sinaptica");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setText("CREACION DE SINAPSIS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 180, 55));
 
-        jButton4.setText("Neurotrasmisor");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
-
-        jButton5.setText("eficiencia Sinaptica");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 140, 50));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 150, 50));
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 50));
-
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 150, 50));
-
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 150, 50));
-
-        jButton6.setText("atras");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 180, 55));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 180, 55));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 180, 55));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 180, 55));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 660));
+        jLabel7.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel7.setText("NEUTRANSMISOR DE LA NEURONA");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, 20));
+
+        jLabel9.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel9.setText("ORIGEN DE LA NEURONA");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel10.setText("DESTINO DE LA NEURONA");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, 20));
+
+        jLabel11.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel11.setText("EFICIANCIA SINAPTICA");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, 20));
+
+        jLabel12.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel12.setText("DISTANCIA SINAPTICA");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 20));
+
+        jLabel4.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel4.setText("ENTERO");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel6.setText("DECIMAL (0.0-1.0)");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel8.setText("TEXTO");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel13.setText("ENTERO");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel15.setText("ENTERO");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        neurotransmisor.setBackground(new java.awt.Color(13, 110, 253));
+        neurotransmisor.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        neurotransmisor.setForeground(new java.awt.Color(255, 255, 255));
+        neurotransmisor.setText("AGREGAR NEUROTRANS");
+        neurotransmisor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                neurotransmisorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(neurotransmisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 180, 30));
+
+        origen.setBackground(new java.awt.Color(13, 110, 253));
+        origen.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        origen.setForeground(new java.awt.Color(255, 255, 255));
+        origen.setText("AGREGAR ORIGEN");
+        jPanel1.add(origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 180, 30));
+
+        destino.setBackground(new java.awt.Color(13, 110, 253));
+        destino.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        destino.setForeground(new java.awt.Color(255, 255, 255));
+        destino.setText("AGREGAR DESTINO");
+        jPanel1.add(destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 180, 30));
+
+        eficiencia.setBackground(new java.awt.Color(13, 110, 253));
+        eficiencia.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        eficiencia.setForeground(new java.awt.Color(255, 255, 255));
+        eficiencia.setText("AGREGAR EFICIENCIA");
+        jPanel1.add(eficiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 180, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void neurotransmisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neurotransmisorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_neurotransmisorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,22 +210,28 @@ public class Crear_sinapsis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton atras;
+    private javax.swing.JButton destino;
+    private javax.swing.JButton distancia;
+    private javax.swing.JButton eficiencia;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton neurotransmisor;
+    private javax.swing.JButton origen;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,43 +36,67 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        fatiga = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("calcular fatiga");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 140, 40));
-
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 430, 480));
 
-        jButton2.setText("atras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        fatiga.setBackground(new java.awt.Color(13, 110, 253));
+        fatiga.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        fatiga.setForeground(new java.awt.Color(255, 255, 255));
+        fatiga.setText("CALCULAR ");
+        fatiga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                fatigaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(fatiga, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 50));
+
+        atras.setBackground(new java.awt.Color(13, 110, 253));
+        atras.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        atras.setForeground(new java.awt.Color(255, 255, 255));
+        atras.setText("ATRAS");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 110, 50));
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        jLabel1.setText("CALCULAR FATIGA");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
-        MenuPrincipal m = new MenuPrincipal(grafo, hash);
+        MenuPrincipal mp = new MenuPrincipal(grafo, hash);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void fatigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatigaActionPerformed
+        // TODO add your handling code here:
+        MenuPrincipal m = new MenuPrincipal (grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_fatigaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,8 +124,9 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton atras;
+    private javax.swing.JButton fatiga;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

@@ -9,13 +9,12 @@ import static proyecto1edd.Interfaz.Cargar_Csv.grafo;
 import static proyecto1edd.Interfaz.Cargar_Csv.hash;
 import proyecto1edd.Neuro.Grafo;
 
-
-
 /**
  *
  * @author LuchoPC
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+
     static Grafo grafo;
     static Hash hash;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuPrincipal.class.getName());
@@ -40,87 +39,193 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        Cargar = new javax.swing.JButton();
+        MostrarGrafo = new javax.swing.JButton();
+        MostrarHash = new javax.swing.JButton();
+        Mostrar_DFS_BFS = new javax.swing.JButton();
+        Dijkstra = new javax.swing.JButton();
+        agregar_eliminar = new javax.swing.JButton();
+        SimulacionDeFatiga = new javax.swing.JButton();
+        Creacion_sinapsis = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Neurotrasmisor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("CARGAR CSV");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Cargar.setBackground(new java.awt.Color(13, 110, 253));
+        Cargar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        Cargar.setForeground(new java.awt.Color(255, 255, 255));
+        Cargar.setText("CARGAR CSV");
+        Cargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CargarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 170, 80));
+        jPanel1.add(Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 190, 80));
 
-        jButton2.setText("Mostrar grafo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        MostrarGrafo.setBackground(new java.awt.Color(13, 110, 253));
+        MostrarGrafo.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        MostrarGrafo.setForeground(new java.awt.Color(255, 255, 255));
+        MostrarGrafo.setText("MOSTRAR GRAFO");
+        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                MostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 160, 80));
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 190, 80));
 
-        jButton3.setText("hash");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 170, 70));
-
-        jButton4.setText("dfs Y bfs");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        MostrarHash.setBackground(new java.awt.Color(13, 110, 253));
+        MostrarHash.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        MostrarHash.setForeground(new java.awt.Color(255, 255, 255));
+        MostrarHash.setText("MOSTRAR HASHTABLE");
+        MostrarHash.setBorder(null);
+        MostrarHash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                MostrarHashActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 160, 70));
+        jPanel1.add(MostrarHash, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 190, 80));
 
-        jButton5.setText("DJISNKA");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 253, 160, 70));
+        Mostrar_DFS_BFS.setBackground(new java.awt.Color(13, 110, 253));
+        Mostrar_DFS_BFS.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        Mostrar_DFS_BFS.setForeground(new java.awt.Color(255, 255, 255));
+        Mostrar_DFS_BFS.setText("DFS Y BFS");
+        Mostrar_DFS_BFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mostrar_DFS_BFSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Mostrar_DFS_BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 190, 80));
 
-        jButton6.setText("AGG Y ELIM");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 253, 170, 70));
+        Dijkstra.setBackground(new java.awt.Color(13, 110, 253));
+        Dijkstra.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        Dijkstra.setForeground(new java.awt.Color(255, 255, 255));
+        Dijkstra.setText("DIJKSTRA");
+        Dijkstra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DijkstraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Dijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 190, 80));
 
-        jButton7.setText("SIMULACION");
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 353, 170, 60));
+        agregar_eliminar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        agregar_eliminar.setText("AGG Y ELIM \n NEURONA");
+        agregar_eliminar.setActionCommand("AGG Y ELIM NEURONA");
+        agregar_eliminar.setBorder(null);
+        agregar_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregar_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(agregar_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 190, 80));
 
-        jButton8.setText("Crear Sinapsis");
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 160, 60));
+        SimulacionDeFatiga.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        SimulacionDeFatiga.setText("SIMULACION DE FATIGA");
+        SimulacionDeFatiga.setBorder(null);
+        SimulacionDeFatiga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SimulacionDeFatigaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SimulacionDeFatiga, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 190, 80));
+
+        Creacion_sinapsis.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        Creacion_sinapsis.setText("CREAR SINAPSIS");
+        Creacion_sinapsis.setBorder(null);
+        Creacion_sinapsis.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Creacion_sinapsis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Creacion_sinapsisActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Creacion_sinapsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 190, 80));
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        jLabel1.setText("MENU PRINCIPAL");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+
+        Neurotrasmisor.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        Neurotrasmisor.setText("AGREGAR NEUROTRASNMISOR");
+        Neurotrasmisor.setBorder(null);
+        Neurotrasmisor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NeurotrasmisorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Neurotrasmisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 190, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void Mostrar_DFS_BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar_DFS_BFSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        DFS_BFS dbfs = new DFS_BFS(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_Mostrar_DFS_BFSActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         // TODO add your handling code here:
-        //MostrarGrafo m = new MostrarGrafo (grafo, hash);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        MostrarGrafo m = new MostrarGrafo(grafo, hash);
+        this.dispose();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
+
+    private void CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarActionPerformed
         // TODO add your handling code here:
         Cargar_Csv c = new Cargar_Csv(grafo, hash);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CargarActionPerformed
+
+    private void MostrarHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarHashActionPerformed
+        // TODO add your handling code here:
+        MostarHash h = new MostarHash(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_MostrarHashActionPerformed
+
+    private void SimulacionDeFatigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimulacionDeFatigaActionPerformed
+        // TODO add your handling code here:
+        Simulacion_fatiga sf = new Simulacion_fatiga(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_SimulacionDeFatigaActionPerformed
+
+    private void Creacion_sinapsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Creacion_sinapsisActionPerformed
+        // TODO add your handling code here:
+        Crear_sinapsis cs = new Crear_sinapsis(grafo, hash);
+        this.dispose();
+
+    }//GEN-LAST:event_Creacion_sinapsisActionPerformed
+
+    private void agregar_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_eliminarActionPerformed
+        // TODO add your handling code here:
+        Agregar a = new Agregar(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_agregar_eliminarActionPerformed
+
+    private void DijkstraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DijkstraActionPerformed
+        // TODO add your handling code here:
+        Dijkstra d = new Dijkstra(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_DijkstraActionPerformed
+
+    private void NeurotrasmisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NeurotrasmisorActionPerformed
+        // TODO add your handling code here:
+        HashTable ht = new HashTable(grafo, hash);
+        this.dispose();
+    }//GEN-LAST:event_NeurotrasmisorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,14 +253,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton Cargar;
+    private javax.swing.JButton Creacion_sinapsis;
+    private javax.swing.JButton Dijkstra;
+    private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton MostrarHash;
+    private javax.swing.JButton Mostrar_DFS_BFS;
+    private javax.swing.JButton Neurotrasmisor;
+    private javax.swing.JButton SimulacionDeFatiga;
+    private javax.swing.JButton agregar_eliminar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

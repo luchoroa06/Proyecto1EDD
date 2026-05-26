@@ -39,59 +39,79 @@ public class Cargar_Csv extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        CargarCSV = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
+        GuardarCSV = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("cargar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        CargarCSV.setBackground(new java.awt.Color(13, 110, 253));
+        CargarCSV.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        CargarCSV.setForeground(new java.awt.Color(255, 255, 255));
+        CargarCSV.setText("CARGAR");
+        CargarCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CargarCSVActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 80, 40));
+        jPanel1.add(CargarCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 140, 40));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 146, 300, 600));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 300, 570));
 
-        jButton2.setText("atras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        atras.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        atras.setForeground(new java.awt.Color(33, 37, 41));
+        atras.setText("ATRAS");
+        atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                atrasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 100, 40));
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 830, 110, 50));
 
-        jButton3.setText("cargar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        GuardarCSV.setBackground(new java.awt.Color(13, 110, 253));
+        GuardarCSV.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        GuardarCSV.setForeground(new java.awt.Color(255, 255, 255));
+        GuardarCSV.setText("GUARDAR CSV");
+        GuardarCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                GuardarCSVActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 780, 80, 40));
+        jPanel1.add(GuardarCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 760, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 870));
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel1.setText("GUARDAR CSV ACTUALIZADO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 720, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel2.setText("CARGAR CSV");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 900));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_atrasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CargarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarCSVActionPerformed
         // TODO add your handling code here:
         javax.swing.JFileChooser selector = new javax.swing.JFileChooser();
 
@@ -111,9 +131,9 @@ public class Cargar_Csv extends javax.swing.JFrame {
             c.leerArchivo(archivoSeleccionado, grafo);
             this.jTextArea1.setText(grafo.mostrar());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CargarCSVActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void GuardarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCSVActionPerformed
         // TODO add your handling code here:
         javax.swing.JFileChooser selector = new javax.swing.JFileChooser();
 
@@ -132,7 +152,7 @@ public class Cargar_Csv extends javax.swing.JFrame {
             c.guardarArchivo(archivoSeleccionado, grafo);
         }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_GuardarCSVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,9 +180,11 @@ public class Cargar_Csv extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton CargarCSV;
+    private javax.swing.JButton GuardarCSV;
+    private javax.swing.JButton atras;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
