@@ -5,22 +5,24 @@
 package proyecto1edd;
 
 /**
+ * Nodo para lista doblemente enlazada de sinapsis
  *
  * @author LuchoPC
  */
 public class NodoLista {
-    NodoLista sig;
-    NodoLista ant;
-    Sinapsis sinapsis;
 
+    NodoLista sig;      // Referencia al siguiente nodo
+    NodoLista ant;      // Referencia al nodo anterior
+    Sinapsis sinapsis;  // Dato almacenado (una sinapsis)
+
+    /**
+     * Constructor que crea un nodo con una sinapsis
+     *
+     * @param sinapsis La sinapsis a almacenar
+     */
     public NodoLista(Sinapsis sinapsis) {
-        this.sig = null;
-        this.ant = null;
+        this.sig = null;    // Inicialmente no tiene siguiente
+        this.ant = null;    // Inicialmente no tiene anterior
         this.sinapsis = sinapsis;
     }
-
-    
 }
-    
-    
-
