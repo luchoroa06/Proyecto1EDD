@@ -11,14 +11,12 @@ package proyecto1edd;
 public class NodoLista {
     NodoLista sig;
     NodoLista ant;
-    int dato;
-    String nombre_neurona;
+    Sinapsis sinapsis;
 
-    public NodoLista(int dato, String nombre_neurona) {
+    public NodoLista(Sinapsis sinapsis) {
         this.sig = null;
         this.ant = null;
-        this.dato = dato;
-        this.nombre_neurona = nombre_neurona;
+        this.sinapsis = sinapsis;
     }
 
     

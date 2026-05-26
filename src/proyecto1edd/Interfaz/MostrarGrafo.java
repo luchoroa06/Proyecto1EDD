@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import proyecto1edd.Hash;
 import static proyecto1edd.Interfaz.MenuPrincipal.grafo;
 import proyecto1edd.Neuro.Grafo;
 
@@ -15,11 +16,11 @@ public class MostrarGrafo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MostrarGrafo.class.getName());
         static Grafo grafo;
-        static HashTable hash;
+        static Hash hash;
     /**
      * Creates new form Grafo
      */
-    public MostrarGrafo(Grafo grafo, HashTable hash) {
+    public MostrarGrafo(Grafo grafo, Hash hash) {
         initComponents();
         this.grafo = grafo;
         this.hash = hash;
