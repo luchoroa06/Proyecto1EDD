@@ -19,7 +19,7 @@ public class Sinapsis {
     public Neurona ID_Neurona_Destino;   // Neurona que recibe la señal
     public float distancia_sináptica;    // Distancia entre neuronas
     public String ID_Neurotransmisor;    // Identificador del neurotransmisor usado
-    public int eficiencia_sináptica;     // Eficiencia de la transmisión
+    public float eficiencia_sináptica;     // Eficiencia de la transmisión
 
     /**
      * Constructor que crea una nueva sinapsis

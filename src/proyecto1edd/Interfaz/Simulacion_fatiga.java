@@ -79,7 +79,7 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
         jLabel1.setText("CALCULAR FATIGA");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 740));
 
@@ -94,8 +94,8 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
 
     private void fatigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatigaActionPerformed
         // TODO add your handling code here:
-        MenuPrincipal m = new MenuPrincipal (grafo, hash);
-        this.dispose();
+        this.grafo.multiplicadorK();
+        this.jTextArea1.setText(grafo.mostrar());   
     }//GEN-LAST:event_fatigaActionPerformed
 
     /**

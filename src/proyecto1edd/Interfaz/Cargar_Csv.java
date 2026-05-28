@@ -27,6 +27,11 @@ public class Cargar_Csv extends javax.swing.JFrame {
         this.grafo = grafo;
         this.hash = hash;
         this.setVisible(true);
+        try {
+            this.jTextArea1.setText(grafo.mostrar());
+        }catch(Exception e){
+            System.out.print("no hay grafo cargado");
+        }
     }
 
     /**

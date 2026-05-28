@@ -11,8 +11,8 @@ package proyecto1edd;
  */
 public class Lista {
 
-    NodoLista primero;   // Primer nodo de la lista
-    int t;               // Tamaño de la lista (cantidad de sinapsis)
+    public NodoLista primero;   // Primer nodo de la lista
+    public int t;               // Tamaño de la lista (cantidad de sinapsis)
 
     /**
      * Constructor que crea la lista vacía
@@ -105,7 +105,7 @@ public class Lista {
         NodoLista aux = primero;
 
         while (aux != null) {
-            salida += "[" + aux.sinapsis.ID_Neurona_Destino.id + "] ";
+            salida += "[" + aux.sinapsis.ID_Neurona_Destino.id + " - " + aux.sinapsis.eficiencia_sináptica + "] ";
             aux = aux.sig;
         }
         return salida;

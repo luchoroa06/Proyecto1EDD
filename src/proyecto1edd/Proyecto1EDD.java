@@ -20,6 +20,8 @@ public class Proyecto1EDD {
     public static void main(String[] args) {
         // TODO code application logic her
         MenuPrincipal m = new MenuPrincipal(new Grafo(), new Hash());
+        
+        
     }
     
 }

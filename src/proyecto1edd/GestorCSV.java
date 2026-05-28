@@ -22,8 +22,8 @@ import proyecto1edd.Neuro.Neurona;
 public class GestorCSV {
 
     /**
-     * Lee un archivo CSV y construye el grafo con las conexiones
-     * El archivo debe tener: origen, destino, distancia, neurotransmisor, eficiencia
+     * Lee un archivo CSV y construye el grafo con las conexiones El archivo
+     * debe tener: origen, destino, distancia, neurotransmisor, eficiencia
      * Ejemplo: 1,2,0.85,GLU,1
      *
      * @param archivo El archivo que se va a leer
@@ -33,12 +33,12 @@ public class GestorCSV {
         String linea;               // Aquí se guarda cada línea leída
         String separador = ",";    // El CSV usa coma para separar los datos
         int con = 0;               // Contador para saltar la primera línea (cabecera)
-        
+
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
             while ((linea = br.readLine()) != null) {   // Se lee línea por línea hasta el final
                 System.out.println(linea);               // Se muestra la línea en consola
-                
+
                 if (con != 0) {                          // Se salta la primera línea (la de los títulos)
                     String[] datos = linea.split(separador);   // Se divide la línea por las comas
 
@@ -48,7 +48,7 @@ public class GestorCSV {
                         float s3 = Float.parseFloat(datos[2].trim()); // distancia sináptica
                         String s4 = datos[3].trim();                  // ID del neurotransmisor
                         int s5 = Integer.parseInt(datos[4].trim());   // eficiencia sináptica
-                        
+
                         grafo.insertar(s1);                // Se inserta la neurona origen si no existe
                         grafo.insertar(s2);                // Se inserta la neurona destino si no existe
                         grafo.insertarArista(s1, s2, s3, s4, s5);  // Se crea la sinapsis
@@ -57,8 +57,6 @@ public class GestorCSV {
                     con += 1;    // Se incrementa el contador después de leer la primera línea
                 }
             }
-
-            System.out.println(grafo.mostrar());  // Se muestra el grafo resultante
 
         } catch (IOException e) {
             // Error cuando el archivo no existe o no se puede abrir
@@ -76,8 +74,8 @@ public class GestorCSV {
     }
 
     /**
-     * Guarda todo el grafo en un archivo CSV
-     * Recorre cada neurona y sus sinapsis, escribiendo una línea por cada sinapsis
+     * Guarda todo el grafo en un archivo CSV Recorre cada neurona y sus
+     * sinapsis, escribiendo una línea por cada sinapsis
      *
      * @param archivo El archivo donde se va a guardar
      * @param grafo El grafo que se quiere guardar
@@ -87,20 +85,20 @@ public class GestorCSV {
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo, false))) {  // false significa que sobrescribe el archivo
 
             Neurona aux = grafo.primero;   // Se empieza desde la primera neurona del grafo
-            
+
             // Se recorren todas las neuronas una por una
             while (aux != null) {
                 NodoLista aux2 = aux.Lista_sinapsis.primero;   // Se obtiene la primera sinapsis de esta neurona
-                
+
                 // Se recorren todas las sinapsis de la neurona actual
                 while (aux2 != null) {
                     // Se arma la línea CSV con los datos
                     String linea = String.format("%d,%d,%f,%s,%d",
-                            aux2.sinapsis.ID_Neurona_Origen.id,      // ID neurona origen
-                            aux2.sinapsis.ID_Neurona_Destino.id,      // ID neurona destino
-                            aux2.sinapsis.distancia_sináptica,        // distancia
-                            aux2.sinapsis.ID_Neurotransmisor,         // neurotransmisor
-                            aux2.sinapsis.eficiencia_sináptica        // eficiencia
+                            aux2.sinapsis.ID_Neurona_Origen.id, // ID neurona origen
+                            aux2.sinapsis.ID_Neurona_Destino.id, // ID neurona destino
+                            aux2.sinapsis.distancia_sináptica, // distancia
+                            aux2.sinapsis.ID_Neurotransmisor, // neurotransmisor
+                            aux2.sinapsis.eficiencia_sináptica // eficiencia
                     );
 
                     pw.println(linea);   // Se escribe la línea en el archivo
@@ -121,10 +119,10 @@ public class GestorCSV {
             javax.swing.JOptionPane.showMessageDialog(null, "No hay datos para guardar en el archivo");
         }
     }
-    
+
     /**
-     * Lee un archivo CSV de neurotransmisores y los guarda en la tabla hash
-     * El archivo debe tener: ID, Nombre, Efecto, Velocidad, Descripción
+     * Lee un archivo CSV de neurotransmisores y los guarda en la tabla hash El
+     * archivo debe tener: ID, Nombre, Efecto, Velocidad, Descripción
      *
      * @param archivo El archivo CSV que se va a leer
      * @param hash La tabla hash donde se guardarán los neurotransmisores
@@ -133,12 +131,12 @@ public class GestorCSV {
         String linea;               // Guarda cada línea leída
         String separador = ",";    // Separador del CSV
         int con = 0;               // Contador para saltar la primera línea
-        
+
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
-                
+
                 if (con != 0) {    // Se salta la primera línea (la de los títulos)
                     String[] datos = linea.split(separador);
 
@@ -148,16 +146,13 @@ public class GestorCSV {
                         String s3 = datos[2].trim();   // Efecto
                         float s4 = Float.parseFloat(datos[3].trim());   // Velocidad
                         String s5 = datos[4].trim();   // Descripción
-                        
+
                         hash.agregar(s1, s2, s3, s4, s5);   // Se agrega a la tabla hash
                     }
                 } else {
                     con += 1;
                 }
             }
-
-            System.out.println(hash.imprimir());   // Se muestran todos los neurotransmisores
-
         } catch (IOException e) {
             // Error cuando el archivo no existe o no se puede abrir
             System.out.println("Error al leer archivo de neurotransmisores: " + e.getMessage());

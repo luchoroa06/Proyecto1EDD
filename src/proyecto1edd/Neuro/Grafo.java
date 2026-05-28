@@ -4,6 +4,8 @@
  */
 package proyecto1edd.Neuro;
 
+import proyecto1edd.Lista;
+import proyecto1edd.NodoLista;
 import proyecto1edd.Sinapsis;
 
 /**
@@ -118,5 +120,17 @@ public class Grafo {
             aux = aux.sig;   // Se avanza a la siguiente neurona
         }
         return salida;
+    }
+    public void multiplicadorK(){
+        Neurona aux = primero;
+        while(aux != null){
+            NodoLista auxadyacente = aux.Lista_sinapsis.primero;
+            while(auxadyacente != null){
+                auxadyacente.sinapsis.eficiencia_sináptica *= 1.2;
+                auxadyacente = auxadyacente.sig;
+            }
+            aux = aux.sig;
+        }
+        
     }
 }

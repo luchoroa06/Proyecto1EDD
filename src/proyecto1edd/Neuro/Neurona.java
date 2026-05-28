@@ -17,7 +17,6 @@ public class Neurona {
     public int id;                  // Identificador único de la neurona
     public Neurona sig;            // Referencia a la siguiente neurona en el grafo
     public Lista Lista_sinapsis;   // Lista de sinapsis que salen de esta neurona
-
     /**
      * Constructor que crea una neurona con un ID específico
      *
