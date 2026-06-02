@@ -133,14 +133,22 @@ public class Grafo {
         }
         
     }
-    public String dfs(){
-         Neurona aux = primero;
+    public String dfs(Neurona aux){
         String recorrido = aux.id+"";
         NodoLista aux2 = primero.Lista_sinapsis.primero ;
         aux.visitada = true;
         
     while(aux != null && aux2 != null ){
-         aux2 = aux2.sig;
+        
+       if(aux2.sinapsis.ID_Neurona_Destino.visitada == false) {
+           
+         String recorrido2 = this.dfs(aux2.sinapsis.ID_Neurona_Destino);
+         recorrido += recorrido2;  
+       }
+     
+       
+       
     }
+    return recorrido;
     }
 }
