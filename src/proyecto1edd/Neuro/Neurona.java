@@ -16,7 +16,8 @@ public class Neurona {
 
     public int id;                  // Identificador único de la neurona
     public Neurona sig;            // Referencia a la siguiente neurona en el grafo
-    public Lista Lista_sinapsis;   // Lista de sinapsis que salen de esta neurona
+    public Lista Lista_sinapsis;    // Lista de sinapsis que salen de esta neurona
+    public boolean visitada;
     /**
      * Constructor que crea una neurona con un ID específico
      *
@@ -25,6 +26,7 @@ public class Neurona {
     public Neurona(int id) {
         this.id = id;
         this.sig = null;                     // Inicialmente no tiene siguiente
-        this.Lista_sinapsis = new Lista();   // Se crea una lista vacía de sinapsis
+        this.Lista_sinapsis = new Lista();  // Se crea una lista vacía de sinapsis
+        this.visitada= false;
     }
 }

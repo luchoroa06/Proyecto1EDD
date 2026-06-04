@@ -4,7 +4,9 @@
  */
 package proyecto1edd.Neuro;
 
+import proyecto1edd.Cola;
 import proyecto1edd.Lista;
+import proyecto1edd.NodoCola;
 import proyecto1edd.NodoLista;
 import proyecto1edd.Sinapsis;
 
@@ -121,16 +123,110 @@ public class Grafo {
         }
         return salida;
     }
-    public void multiplicadorK(){
+
+    public void multiplicadorK() {
         Neurona aux = primero;
-        while(aux != null){
+        while (aux != null) {
             NodoLista auxadyacente = aux.Lista_sinapsis.primero;
-            while(auxadyacente != null){
+            while (auxadyacente != null) {
                 auxadyacente.sinapsis.eficiencia_sináptica *= 1.2;
                 auxadyacente = auxadyacente.sig;
             }
             aux = aux.sig;
         }
-        
+
+    }
+
+    public String[] dfsrecursivo() {
+        String[] recorrido = new String[20];
+        Neurona aux = primero;
+        int cont = 0;
+        while (aux != null) {
+            if (!aux.visitada) {
+                recorrido[cont] = this.dfs(aux);
+                cont++;
+
+            }
+            aux = aux.sig;
+            aux.visitada = false;
+        }
+        aux = primero;
+        while (aux != null) {
+            aux.visitada = false;
+        }
+        aux = aux.sig;
+        return recorrido;
+    }
+
+    private String dfs(Neurona aux) {
+        String recorrido = aux.id + "";
+        NodoLista aux2 = primero.Lista_sinapsis.primero;
+        aux.visitada = true;
+
+        while (aux != null && aux2 != null) {
+
+            if (aux2.sinapsis.ID_Neurona_Destino.visitada == false) {
+
+                String recorrido2 = this.dfs(aux2.sinapsis.ID_Neurona_Destino);
+                recorrido += recorrido2;
+            }
+
+        }
+        return recorrido;
+    }
+
+    public String BFS() {
+        String resultado = "Componentes Conexos (BFS):\n";
+
+        // Reiniciar banderas de visitados
+        Neurona aux = primero;
+        while (aux != null) {
+            aux.visitada = false;
+            aux = aux.sig;
+        }
+
+        int contador = 1;
+        aux = primero;
+
+        // Recorremos todas las neuronas
+        while (aux != null) {
+            // Si la neurona no ha sido visitada, empezamos un nuevo componente
+            if (!aux.visitada) {
+                resultado += "Componente " + (contador++) + ": ";
+
+                // Creamos una cola para el BFS (usando tu clase Cola)
+                Cola cola = new Cola();
+                cola.encolar(aux);
+                aux.visitada = true;
+
+                // Mientras la cola no esté vacía
+                while (cola.primero != null) {
+                    NodoCola nodoActual = cola.desencolar();
+                    Neurona actual = nodoActual.dato;
+                    resultado += actual.id + " ";
+
+                    // Recorremos todas las sinapsis de la neurona actual
+                    NodoLista sinapsisActual = actual.Lista_sinapsis.primero;
+                    while (sinapsisActual != null) {
+                        Neurona destino = sinapsisActual.sinapsis.ID_Neurona_Destino;
+                        // Si el destino no ha sido visitado, lo encolamos
+                        if (!destino.visitada) {
+                            destino.visitada = true;
+                            cola.encolar(destino);
+                        }
+                        sinapsisActual = sinapsisActual.sig;
+                    }
+                }
+                resultado += "\n";
+            }
+            aux = aux.sig;
+        }
+        aux = primero;
+        //se reinicia otra vez para un proximo uso
+        while (aux != null) {
+            aux.visitada = false;
+            aux = aux.sig;
+        }
+        return resultado;
     }
 }
