@@ -32,6 +32,7 @@ public class Cargar_Csv extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.print("no hay grafo cargado");
         }
+       
     }
 
     /**

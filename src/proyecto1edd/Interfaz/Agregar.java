@@ -24,6 +24,7 @@ public class Agregar extends javax.swing.JFrame {
         this.setVisible(true);
         this.grafo = grafo;
         this.hash = hash;
+
     }
 
     /**
@@ -37,10 +38,10 @@ public class Agregar extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        eliminado = new javax.swing.JTextArea();
         Agregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        agregado = new javax.swing.JTextArea();
         Eliminar = new javax.swing.JButton();
         BotonAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,9 +53,9 @@ public class Agregar extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(248, 249, 250));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        eliminado.setColumns(20);
+        eliminado.setRows(5);
+        jScrollPane3.setViewportView(eliminado);
 
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 336, 260, 100));
 
@@ -62,12 +63,17 @@ public class Agregar extends javax.swing.JFrame {
         Agregar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         Agregar.setForeground(new java.awt.Color(255, 255, 255));
         Agregar.setText("AGREGAR NEURONA");
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
         jPanel4.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 198, 160, 50));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("\n");
-        jScrollPane2.setViewportView(jTextArea2);
+        agregado.setColumns(20);
+        agregado.setRows(5);
+        agregado.setText("\n");
+        jScrollPane2.setViewportView(agregado);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 86, 260, 100));
 
@@ -115,7 +121,15 @@ public class Agregar extends javax.swing.JFrame {
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         // TODO add your handling code here:
+        int elim = Integer.parseInt(this.eliminado.getText());
+        grafo.eliminar(elim);
     }//GEN-LAST:event_EliminarActionPerformed
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        // TODO add your handling code here:
+        int agg = Integer.parseInt(this.agregado.getText());
+        grafo.insertar(agg);
+    }//GEN-LAST:event_AgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,12 +160,12 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JButton Agregar;
     private javax.swing.JButton BotonAtras;
     private javax.swing.JButton Eliminar;
+    private javax.swing.JTextArea agregado;
+    private javax.swing.JTextArea eliminado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     // End of variables declaration//GEN-END:variables
 }

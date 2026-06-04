@@ -73,6 +73,11 @@ public class DFS_BFS extends javax.swing.JFrame {
         DFS.setBackground(new java.awt.Color(13, 110, 253));
         DFS.setForeground(new java.awt.Color(255, 255, 255));
         DFS.setText("DFS");
+        DFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DFSActionPerformed(evt);
+            }
+        });
         jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 140, 40));
 
         jTextArea2.setColumns(20);
@@ -111,6 +116,7 @@ public class DFS_BFS extends javax.swing.JFrame {
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         // TODO add your handling code here:
+        this.jTextArea1.setText(this.grafo.BFS());
     }//GEN-LAST:event_BFSActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
@@ -118,6 +124,14 @@ public class DFS_BFS extends javax.swing.JFrame {
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        // TODO add your handling code here:
+        String[] dfff = grafo.dfsrecursivo();
+        for (int i = 0; i < dfff.length; i++) {
+            this.jTextArea2.setText(this.jTextArea2.getText() + dfff[i]);
+        }
+    }//GEN-LAST:event_DFSActionPerformed
 
     /**
      * @param args the command line arguments

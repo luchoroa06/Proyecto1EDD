@@ -37,7 +37,7 @@ public class GestorCSV {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
             while ((linea = br.readLine()) != null) {   // Se lee línea por línea hasta el final
-                System.out.println(linea);               // Se muestra la línea en consola
+                //System.out.println(linea);
 
                 if (con != 0) {                          // Se salta la primera línea (la de los títulos)
                     String[] datos = linea.split(separador);   // Se divide la línea por las comas

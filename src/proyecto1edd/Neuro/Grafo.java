@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Neuro;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Cola;
 import proyecto1edd.Hash;
 import proyecto1edd.Lista;
@@ -143,36 +144,38 @@ public class Grafo {
         String[] recorrido = new String[20];
         Neurona aux = primero;
         int cont = 0;
+
+        aux = primero;
+        while (aux != null) {
+            aux.visitada = false;
+            aux = aux.sig;
+        }
+        aux = primero;
         while (aux != null) {
             if (!aux.visitada) {
                 recorrido[cont] = this.dfs(aux);
                 cont++;
-
             }
             aux = aux.sig;
-            aux.visitada = false;
         }
-        aux = primero;
-        while (aux != null) {
-            aux.visitada = false;
+        String[] resultado = new String[cont];
+        for (int i = 0; i < cont; i++) {
+            resultado[i] = recorrido[i];
         }
-        aux = aux.sig;
-        return recorrido;
+        return resultado;
     }
 
     private String dfs(Neurona aux) {
-        String recorrido = aux.id + "";
-        NodoLista aux2 = primero.Lista_sinapsis.primero;
+        String recorrido = String.valueOf(aux.id);
+        NodoLista aux2 = aux.Lista_sinapsis.primero;
         aux.visitada = true;
 
-        while (aux != null && aux2 != null) {
-
-            if (aux2.sinapsis.ID_Neurona_Destino.visitada == false) {
-
+        while (aux2 != null) {
+            if (!aux2.sinapsis.ID_Neurona_Destino.visitada) {
                 String recorrido2 = this.dfs(aux2.sinapsis.ID_Neurona_Destino);
-                recorrido += recorrido2;
+                recorrido += " → " + recorrido2;  // Flecha más bonita
             }
-
+            aux2 = aux2.sig;
         }
         return recorrido;
     }
@@ -241,7 +244,7 @@ public class Grafo {
      * fatiga)
      * @return String con la ruta y el tiempo total
      */
-    public String dijkstra(int inicio, int fin, Hash tablaHash, float k) {
+    public String dijkstra(int inicio, int fin, Hash tablaHash) {
         // 1. Obtener todas las neuronas en un arreglo
         Neurona[] neuronas = obtenerArregloNeuronas();
         int n = neuronas.length;
@@ -323,12 +326,13 @@ public class Grafo {
                     if (neurotransmisor != null) {
                         velocidad = neurotransmisor.velocidad;
                     } else {
-                        System.err.println("Advertencia: Neurotransmisor " + idNeurotransmisor + " no encontrado en la tabla hash. Usando velocidad por defecto 1.0");
+                        JOptionPane.showMessageDialog(null, "Advertencia: Neurotransmisor " + idNeurotransmisor + " no encontrado en la tabla hash. Usando velocidad por defecto 1.0");
                         velocidad = 1.0f;
                     }
 
-                    // Calcular peso de la arista usando la fórmula: W = d / (v * k)
-                    float peso = sinapsis.distancia_sináptica / (velocidad * k);
+                    // Calcular peso de la arista usando la fórmula: W = d / (v * eficiencia_sináptica)
+                    // Donde eficiencia_sináptica es el factor k propio de cada sinapsis
+                    float peso = sinapsis.distancia_sináptica / (velocidad * sinapsis.eficiencia_sináptica);
                     float nuevoTiempo = tiempos[u] + peso;
 
                     // Si encontramos un camino más rápido, actualizamos
@@ -380,4 +384,5 @@ public class Grafo {
         }
         return arreglo;
     }
+
 }

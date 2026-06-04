@@ -24,6 +24,7 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
         this.grafo = grafo;
         this.hash = hash;
         this.setVisible(true);
+
     }
 
     /**

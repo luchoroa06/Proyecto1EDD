@@ -37,10 +37,16 @@ public class Dijkstra extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         dijkstra = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         ATRAS = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        salida = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        destino = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        origen = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,13 +57,12 @@ public class Dijkstra extends javax.swing.JFrame {
         dijkstra.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         dijkstra.setForeground(new java.awt.Color(255, 255, 255));
         dijkstra.setText("CARGAR DIJKSTRA");
-        jPanel1.add(dijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, 60));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, 250));
+        dijkstra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dijkstraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dijkstra, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, 60));
 
         ATRAS.setBackground(new java.awt.Color(13, 110, 253));
         ATRAS.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -68,21 +73,49 @@ public class Dijkstra extends javax.swing.JFrame {
                 ATRASActionPerformed(evt);
             }
         });
-        jPanel1.add(ATRAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 60));
+        jPanel1.add(ATRAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 100, 60));
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jLabel3.setText("BUSQUEDA DE RUTA MAS CORTA");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
+        salida.setColumns(20);
+        salida.setRows(5);
+        jScrollPane3.setViewportView(salida);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 420, 250));
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel1.setText("NEURONA DE ORIGEN");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel2.setText("NEURONA DE DESTINO");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
+
+        destino.setColumns(20);
+        destino.setRows(5);
+        jScrollPane4.setViewportView(destino);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
+
+        origen.setColumns(20);
+        origen.setRows(5);
+        jScrollPane5.setViewportView(origen);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,6 +126,11 @@ public class Dijkstra extends javax.swing.JFrame {
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
     }//GEN-LAST:event_ATRASActionPerformed
+
+    private void dijkstraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dijkstraActionPerformed
+        // TODO add your handling code here:
+        this.salida.setText(this.grafo.dijkstra(Integer.parseInt(this.origen.getText()),Integer.parseInt(this.destino.getText()), hash));
+    }//GEN-LAST:event_dijkstraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,10 +159,16 @@ public class Dijkstra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ATRAS;
+    private javax.swing.JTextArea destino;
     private javax.swing.JButton dijkstra;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextArea origen;
+    private javax.swing.JTextArea salida;
     // End of variables declaration//GEN-END:variables
 }
