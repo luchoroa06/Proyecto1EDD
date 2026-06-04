@@ -5,7 +5,9 @@
 package proyecto1edd.Neuro;
 
 import proyecto1edd.Cola;
+import proyecto1edd.Hash;
 import proyecto1edd.Lista;
+import proyecto1edd.Neurotransmisor;
 import proyecto1edd.NodoCola;
 import proyecto1edd.NodoLista;
 import proyecto1edd.Sinapsis;
@@ -228,5 +230,154 @@ public class Grafo {
             aux = aux.sig;
         }
         return resultado;
+    }
+
+    /**
+     * @param inicio ID de la neurona de inicio
+     * @param fin ID de la neurona de destino
+     * @param tablaHash Tabla hash que contiene los neurotransmisores con sus
+     * velocidades
+     * @param k factor de atenuación (fatiga neuronal, normalmente 1.0 si no hay
+     * fatiga)
+     * @return String con la ruta y el tiempo total
+     */
+    public String dijkstra(int inicio, int fin, Hash tablaHash, float k) {
+        // 1. Obtener todas las neuronas en un arreglo
+        Neurona[] neuronas = obtenerArregloNeuronas();
+        int n = neuronas.length;
+
+        // 2. Encontrar índices de inicio y fin
+        int startIdx = -1, endIdx = -1;
+        for (int i = 0; i < n; i++) {
+            if (neuronas[i].id == inicio) {
+                startIdx = i;
+            }
+            if (neuronas[i].id == fin) {
+                endIdx = i;
+            }
+        }
+
+        if (startIdx == -1) {
+            return "Neurona de inicio " + inicio + " no encontrada.";
+        }
+        if (endIdx == -1) {
+            return "Neurona de destino " + fin + " no encontrada.";
+        }
+
+        // 3. Inicializar estructuras de Dijkstra
+        float[] tiempos = new float[n];      // Tiempo mínimo desde inicio a cada neurona
+        int[] padres = new int[n];           // Neurona anterior en la ruta óptima
+        boolean[] visitados = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            tiempos[i] = Float.MAX_VALUE;
+            padres[i] = -1;
+            visitados[i] = false;
+        }
+
+        tiempos[startIdx] = 0;  // Tiempo de inicio a inicio es 0
+
+        // 4. Algoritmo de Dijkstra
+        for (int i = 0; i < n - 1; i++) {
+            // Encontrar la neurona no visitada con el tiempo mínimo
+            int u = -1;
+            float minTiempo = Float.MAX_VALUE;
+            for (int j = 0; j < n; j++) {
+                if (!visitados[j] && tiempos[j] <= minTiempo) {
+                    minTiempo = tiempos[j];
+                    u = j;
+                }
+            }
+
+            // Si no hay más neuronas alcanzables o ya llegamos al destino, terminamos
+            if (u == -1 || tiempos[u] == Float.MAX_VALUE) {
+                break;
+            }
+            if (u == endIdx) {
+                break;  // Optimización: ya encontramos el camino más corto al destino
+            }
+            visitados[u] = true;
+            Neurona neuronaU = neuronas[u];
+
+            // Recorrer todas las sinapsis SALIENTES de la neurona U
+            NodoLista sinapsisActual = neuronaU.Lista_sinapsis.primero;
+            while (sinapsisActual != null) {
+                Sinapsis sinapsis = sinapsisActual.sinapsis;
+                Neurona destino = sinapsis.ID_Neurona_Destino;
+
+                // Encontrar índice del destino
+                int v = -1;
+                for (int j = 0; j < n; j++) {
+                    if (neuronas[j].id == destino.id) {
+                        v = j;
+                        break;
+                    }
+                }
+
+                if (v != -1 && !visitados[v]) {
+                    // Buscar el neurotransmisor en la tabla hash
+                    String idNeurotransmisor = sinapsis.ID_Neurotransmisor;
+                    Neurotransmisor neurotransmisor = tablaHash.buscar(idNeurotransmisor);
+
+                    float velocidad;
+                    if (neurotransmisor != null) {
+                        velocidad = neurotransmisor.velocidad;
+                    } else {
+                        System.err.println("Advertencia: Neurotransmisor " + idNeurotransmisor + " no encontrado en la tabla hash. Usando velocidad por defecto 1.0");
+                        velocidad = 1.0f;
+                    }
+
+                    // Calcular peso de la arista usando la fórmula: W = d / (v * k)
+                    float peso = sinapsis.distancia_sináptica / (velocidad * k);
+                    float nuevoTiempo = tiempos[u] + peso;
+
+                    // Si encontramos un camino más rápido, actualizamos
+                    if (nuevoTiempo < tiempos[v]) {
+                        tiempos[v] = nuevoTiempo;
+                        padres[v] = u;  // u es el predecesor de v
+                    }
+                }
+                sinapsisActual = sinapsisActual.sig;
+            }
+        }
+
+        // 5. Verificar si hay camino
+        if (tiempos[endIdx] == Float.MAX_VALUE) {
+            return "No hay camino desde la neurona " + inicio + " hasta la neurona " + fin;
+        }
+
+        // 6. Reconstruir el camino
+        String camino = "";
+        int temp = endIdx;
+        while (temp != -1) {
+            camino = neuronas[temp].id + (camino.isEmpty() ? "" : " → ") + camino;
+            temp = padres[temp];
+        }
+
+        return String.format("Ruta más rápida: %s\nTiempo total de transmisión: %.4f unidades de tiempo",
+                camino, tiempos[endIdx]);
+    }
+
+    /**
+     * Convierte la lista enlazada de neuronas en un arreglo para facilitar el
+     * acceso por índice
+     */
+    private Neurona[] obtenerArregloNeuronas() {
+        // Contar cuántas neuronas hay
+        int count = 0;
+        Neurona aux = primero;
+        while (aux != null) {
+            count++;
+            aux = aux.sig;
+        }
+
+        // Llenar el arreglo
+        Neurona[] arreglo = new Neurona[count];
+        aux = primero;
+        for (int i = 0; i < count; i++) {
+            arreglo[i] = aux;
+            aux = aux.sig;
+        }
+        return arreglo;
     }
 }

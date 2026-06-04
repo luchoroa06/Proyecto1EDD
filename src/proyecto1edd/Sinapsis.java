@@ -38,4 +38,8 @@ public class Sinapsis {
         this.ID_Neurotransmisor = ID_Neurotransmisor;
         this.eficiencia_sináptica = eficiencia_sináptica;
     }
+
+    public float calcularPeso(float velocidad, float atenuacion) {
+        return this.distancia_sináptica / (velocidad * atenuacion);
+    }
 }
