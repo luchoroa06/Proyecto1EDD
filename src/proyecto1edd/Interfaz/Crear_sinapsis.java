@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
@@ -69,7 +70,7 @@ public class Crear_sinapsis extends javax.swing.JFrame {
                 atrasActionPerformed(evt);
             }
         });
-        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 670, 110, 50));
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 110, 50));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
@@ -136,9 +137,9 @@ public class Crear_sinapsis extends javax.swing.JFrame {
                 creacionActionPerformed(evt);
             }
         });
-        jPanel1.add(creacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 180, 90));
+        jPanel1.add(creacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 180, 90));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 750));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,13 +156,18 @@ public class Crear_sinapsis extends javax.swing.JFrame {
 
     private void creacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creacionActionPerformed
         // TODO add your handling code here:
-        int origen = Integer.parseInt(this.originado.getText());
+        try{
+            int origen = Integer.parseInt(this.originado.getText());
         int destino = Integer.parseInt(this.destinado.getText());
         float distancia = Float.parseFloat(this.sipnaptico.getText());
         String neurona = this.neuron.getText();
         int eficiencia = Integer.parseInt(this.eficiencizado.getText());
         
         grafo.insertarArista(origen, destino, distancia, neurona, eficiencia);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error al Crear sinapsis");
+        }
     }//GEN-LAST:event_creacionActionPerformed
 
     /**

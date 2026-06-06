@@ -46,14 +46,14 @@ public class Lista {
     /**
      * Elimina una sinapsis de la lista
      *
-     * @param sinapsis La sinapsis a eliminar
+     * @param dato
      */
-    public void eliminar(Sinapsis sinapsis) {
+    public void eliminar(int dato) {
         if (primero != null) {
             NodoLista aux = primero;
 
             // Caso especial: el elemento a eliminar es el primero
-            if (aux.sinapsis.equals(sinapsis)) {
+            if (aux.sinapsis.ID_Neurona_Destino.id == dato) {
                 primero = primero.sig;   // El segundo nodo pasa a ser primero
                 if (primero != null) {
                     primero.ant = null;  // El nuevo primero no tiene anterior
@@ -63,7 +63,7 @@ public class Lista {
             }
 
             // Se busca el nodo a eliminar
-            while (aux.sig != null && !aux.sig.sinapsis.equals(sinapsis)) {
+            while (aux.sig != null && aux.sinapsis.ID_Neurona_Destino.id != dato) {
                 aux = aux.sig;
             }
 

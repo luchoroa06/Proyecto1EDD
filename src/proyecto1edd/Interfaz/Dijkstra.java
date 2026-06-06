@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
@@ -73,7 +74,7 @@ public class Dijkstra extends javax.swing.JFrame {
                 ATRASActionPerformed(evt);
             }
         });
-        jPanel1.add(ATRAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 100, 60));
+        jPanel1.add(ATRAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 100, 60));
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jLabel3.setText("BUSQUEDA DE RUTA MAS CORTA");
@@ -115,7 +116,7 @@ public class Dijkstra extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -129,7 +130,12 @@ public class Dijkstra extends javax.swing.JFrame {
 
     private void dijkstraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dijkstraActionPerformed
         // TODO add your handling code here:
-        this.salida.setText(this.grafo.dijkstra(Integer.parseInt(this.origen.getText()),Integer.parseInt(this.destino.getText()), hash));
+        try{
+            this.salida.setText(this.grafo.dijkstra(Integer.parseInt(this.origen.getText()),Integer.parseInt(this.destino.getText()), hash));
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error al cargar dijkstra");
+        }
     }//GEN-LAST:event_dijkstraActionPerformed
 
     /**

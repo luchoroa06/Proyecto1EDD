@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
@@ -54,7 +55,7 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 430, 480));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 430, 440));
 
         fatiga.setBackground(new java.awt.Color(13, 110, 253));
         fatiga.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -76,13 +77,13 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
                 atrasActionPerformed(evt);
             }
         });
-        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 110, 50));
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 110, 50));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
         jLabel1.setText("CALCULAR FATIGA");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 740));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,8 +96,13 @@ public class Simulacion_fatiga extends javax.swing.JFrame {
 
     private void fatigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatigaActionPerformed
         // TODO add your handling code here:
-        this.grafo.multiplicadorK();
-        this.jTextArea1.setText(grafo.mostrar());   
+       try{
+            this.grafo.multiplicadorK();
+        this.jTextArea1.setText(grafo.mostrar());
+       }   
+       catch(Exception e){
+           JOptionPane.showMessageDialog(rootPane, "Error al calcular");
+       }
     }//GEN-LAST:event_fatigaActionPerformed
 
     /**

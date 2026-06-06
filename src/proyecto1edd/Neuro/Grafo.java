@@ -59,7 +59,8 @@ public class Grafo {
         if (primero != null) {
             // Caso especial: la neurona a eliminar es la primera
             if (primero.id == dato) {
-                primero = primero.sig;   // La segunda neurona pasa a ser la primera
+                primero = primero.sig; 
+                this.eliminarArista(dato);// La segunda neurona pasa a ser la primera
                 return;
             }
             Neurona aux = primero;
@@ -70,8 +71,25 @@ public class Grafo {
             }
             // Si se encontró, se salta el nodo
             if (aux.sig != null) {
-                aux.sig = aux.sig.sig;   // Se elimina la referencia a la neurona
+                
+               aux.sig = aux.sig.sig;  
+               this.eliminarArista(dato);// Se elimina la referencia a la neurona
             }
+        }
+    }
+    
+    public void eliminarArista(int dato){
+        if (primero != null) {
+           
+            
+            Neurona aux = primero;
+
+            
+            while (aux != null) {
+                aux.Lista_sinapsis.eliminar(dato);
+                aux = aux.sig;
+            }
+            
         }
     }
 
@@ -158,9 +176,16 @@ public class Grafo {
             }
             aux = aux.sig;
         }
-        String[] resultado = new String[cont];
+        String[] resultado = new String[cont + 1];
         for (int i = 0; i < cont; i++) {
             resultado[i] = recorrido[i];
+        }
+        if(cont > 1){
+            resultado[cont] = "La red neuronal se ha fragmentado en multiples componentes";
+           
+        }
+        else{
+            resultado[cont] ="La red esta fuertemente conectada";
         }
         return resultado;
     }
@@ -169,14 +194,18 @@ public class Grafo {
         String recorrido = String.valueOf(aux.id);
         NodoLista aux2 = aux.Lista_sinapsis.primero;
         aux.visitada = true;
+        int contador = 1;
 
         while (aux2 != null) {
             if (!aux2.sinapsis.ID_Neurona_Destino.visitada) {
                 String recorrido2 = this.dfs(aux2.sinapsis.ID_Neurona_Destino);
-                recorrido += " → " + recorrido2;  // Flecha más bonita
+                recorrido += " → " + recorrido2 ; 
+                contador += 1;                             // Flecha más bonita
             }
             aux2 = aux2.sig;
+            
         }
+        
         return recorrido;
     }
 
@@ -231,6 +260,13 @@ public class Grafo {
         while (aux != null) {
             aux.visitada = false;
             aux = aux.sig;
+        }
+        if(contador > 2){
+            resultado += "La red neuronal se ha fragmentado en multiples componentes";
+           
+        }
+        else{
+            resultado +="La red esta fuertemente conectada";
         }
         return resultado;
     }

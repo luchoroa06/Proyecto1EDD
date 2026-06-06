@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
@@ -37,27 +38,19 @@ public class Agregar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        eliminado = new javax.swing.JTextArea();
         Agregar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        agregado = new javax.swing.JTextArea();
         Eliminar = new javax.swing.JButton();
         BotonAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        IdAgregar = new javax.swing.JTextField();
+        IdEliminar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(248, 249, 250));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        eliminado.setColumns(20);
-        eliminado.setRows(5);
-        jScrollPane3.setViewportView(eliminado);
-
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 336, 260, 100));
 
         Agregar.setBackground(new java.awt.Color(13, 110, 253));
         Agregar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -68,14 +61,7 @@ public class Agregar extends javax.swing.JFrame {
                 AgregarActionPerformed(evt);
             }
         });
-        jPanel4.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 198, 160, 50));
-
-        agregado.setColumns(20);
-        agregado.setRows(5);
-        agregado.setText("\n");
-        jScrollPane2.setViewportView(agregado);
-
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 86, 260, 100));
+        jPanel4.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 160, 50));
 
         Eliminar.setBackground(new java.awt.Color(13, 110, 253));
         Eliminar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -86,7 +72,7 @@ public class Agregar extends javax.swing.JFrame {
                 EliminarActionPerformed(evt);
             }
         });
-        jPanel4.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 448, 160, 50));
+        jPanel4.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 180, 50));
 
         BotonAtras.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         BotonAtras.setForeground(new java.awt.Color(33, 37, 41));
@@ -107,6 +93,8 @@ public class Agregar extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
         jLabel2.setText("ELIMINA TU NEURONA");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 301, -1, -1));
+        jPanel4.add(IdAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 76, 250, 120));
+        jPanel4.add(IdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 250, 110));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 640));
 
@@ -118,17 +106,29 @@ public class Agregar extends javax.swing.JFrame {
         MenuPrincipal m = new MenuPrincipal(grafo, hash);
         this.dispose();
     }//GEN-LAST:event_BotonAtrasActionPerformed
-
+    
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         // TODO add your handling code here:
-        int elim = Integer.parseInt(this.eliminado.getText());
+        try {
+            int elim = Integer.parseInt(this.IdEliminar.getText());
         grafo.eliminar(elim);
+        JOptionPane.showMessageDialog(rootPane, "Se elimino correctamente ");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error al eliminar ");
+        }
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         // TODO add your handling code here:
-        int agg = Integer.parseInt(this.agregado.getText());
+        try{
+            int agg = Integer.parseInt(this.IdAgregar.getText());
         grafo.insertar(agg);
+        JOptionPane.showMessageDialog(rootPane, "Se inserto correctamente ");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error al Agregar ");
+        }
     }//GEN-LAST:event_AgregarActionPerformed
 
     /**
@@ -160,12 +160,10 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JButton Agregar;
     private javax.swing.JButton BotonAtras;
     private javax.swing.JButton Eliminar;
-    private javax.swing.JTextArea agregado;
-    private javax.swing.JTextArea eliminado;
+    private javax.swing.JTextField IdAgregar;
+    private javax.swing.JTextField IdEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

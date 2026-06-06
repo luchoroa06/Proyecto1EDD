@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import static proyecto1edd.Interfaz.Cargar_Csv.grafo;
 import static proyecto1edd.Interfaz.Cargar_Csv.hash;
@@ -102,7 +103,7 @@ public class MostarHash extends javax.swing.JFrame {
             this.jTextArea1.setText(this.hash.imprimir());
 
         } catch (Exception e) {
-
+        JOptionPane.showMessageDialog(rootPane, "Error al mostrar");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

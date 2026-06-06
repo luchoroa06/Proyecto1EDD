@@ -45,7 +45,7 @@ public class HashTable extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         Nombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Id2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -65,7 +65,12 @@ public class HashTable extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("BUSCAR");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, 110, 50));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 110, 50));
 
         Descripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +95,7 @@ public class HashTable extends javax.swing.JFrame {
         jPanel1.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 62, 440, 30));
         jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 440, 30));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 430, 40));
+        jPanel1.add(Id2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 430, 40));
 
         jLabel8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel8.setText("INGRESA TU NEUROTRASNMISOR");
@@ -119,7 +124,7 @@ public class HashTable extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(13, 110, 253));
         jButton4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("INSETAR");
+        jButton4.setText("INSERTAR");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -171,7 +176,19 @@ public class HashTable extends javax.swing.JFrame {
     }//GEN-LAST:event_DescripcionActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+   try{
+        String id = this.ID.getText();
+    String nom = this.Nombre.getText();
+    String efec = this.Efecto.getText();
+    float velo = Float.parseFloat(this.Velocidad.getText());
+    String desc = this.Descripcion.getText();
+    
+    this.hash.agregar(id, nom, efec, velo, desc);
+   }
+   catch(Exception e){
+       JOptionPane.showMessageDialog(rootPane, "Error al insertar");
+   }
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
@@ -179,6 +196,18 @@ public class HashTable extends javax.swing.JFrame {
         MenuPrincipal mp = new MenuPrincipal(grafo, hash);
         this.dispose();
     }//GEN-LAST:event_ATRASActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    try{
+         String id = this.Id2.getText();
+     Neurotransmisor encontrado = this.hash.buscar(id);
+     JOptionPane.showMessageDialog(rootPane,"Se ha encontrado el neurotransmisor "+ encontrado.nombre);
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(rootPane, "Error al buscar");
+    }
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,6 +239,7 @@ public class HashTable extends javax.swing.JFrame {
     private javax.swing.JTextField Descripcion;
     private javax.swing.JTextField Efecto;
     private javax.swing.JTextField ID;
+    private javax.swing.JTextField Id2;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Velocidad;
     private javax.swing.JButton jButton2;
@@ -223,6 +253,5 @@ public class HashTable extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

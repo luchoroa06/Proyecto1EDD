@@ -4,9 +4,11 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JPanel;
 import proyecto1edd.Hash;
 import static proyecto1edd.Interfaz.MenuPrincipal.grafo;
 import proyecto1edd.Neuro.Grafo;
+import proyecto1edd.VisualizarGrafo;
 
 /**
  *
@@ -21,10 +23,25 @@ public class MostrarGrafo extends javax.swing.JFrame {
      * Creates new form Grafo
      */
     public MostrarGrafo(Grafo grafo, Hash hash) {
-        initComponents();
-        this.grafo = grafo;
-        this.hash = hash;
-        this.setVisible(true);
+    initComponents();
+    this.grafo = grafo;
+    this.hash = hash;
+    this.setVisible(true);
+    
+    // Generar el panel interactivo del grafo
+    VisualizarGrafo b = new VisualizarGrafo(grafo);
+    JPanel panelGrafo = b.construirGrafo();
+    
+    // Configurar dimensiones para acoplarlo al AbsoluteLayout de mostrarG
+    panelGrafo.setBounds(50, 80, 1140, 420); 
+    
+    // Añadir al contenedor visual de tu ventana
+    mostrarG.add(panelGrafo);
+    
+    // Validar y repintar la interfaz para plasmar el cambio en pantalla
+    mostrarG.revalidate();
+    mostrarG.repaint();
+
     }
 
     /**
@@ -51,7 +68,7 @@ public class MostrarGrafo extends javax.swing.JFrame {
         jLabel1.setText("GRAFO");
         mostrarG.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
 
-        getContentPane().add(mostrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 680));
+        getContentPane().add(mostrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 530));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,9 +82,9 @@ public class MostrarGrafo extends javax.swing.JFrame {
                 atrasActionPerformed(evt);
             }
         });
-        jPanel2.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, 50));
+        jPanel2.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 1240, 110));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 1240, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

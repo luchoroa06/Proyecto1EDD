@@ -4,6 +4,7 @@
  */
 package proyecto1edd.Interfaz;
 
+import javax.swing.JOptionPane;
 import proyecto1edd.Hash;
 import proyecto1edd.Neuro.Grafo;
 
@@ -95,7 +96,7 @@ public class DFS_BFS extends javax.swing.JFrame {
                 atrasActionPerformed(evt);
             }
         });
-        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 703, 110, 50));
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 110, 50));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         jLabel1.setText("BUSQUEDA DFS");
@@ -109,14 +110,19 @@ public class DFS_BFS extends javax.swing.JFrame {
         jLabel4.setText("BUSQUEDA BFS");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 790));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
         // TODO add your handling code here:
-        this.jTextArea1.setText(this.grafo.BFS());
+        try{
+            this.jTextArea1.setText(this.grafo.BFS());
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error en la busqueda");
+        }
     }//GEN-LAST:event_BFSActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
@@ -127,10 +133,15 @@ public class DFS_BFS extends javax.swing.JFrame {
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
         // TODO add your handling code here:
-        String[] dfff = grafo.dfsrecursivo();
+        try{
+            String[] dfff = grafo.dfsrecursivo();
         for (int i = 0; i < dfff.length; i++) {
-            this.jTextArea2.setText(this.jTextArea2.getText() + dfff[i]);
+            this.jTextArea2.setText(this.jTextArea2.getText() + dfff[i] + "\n");
         }
+        }
+        catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Error en la busqueda");
+                }
     }//GEN-LAST:event_DFSActionPerformed
 
     /**

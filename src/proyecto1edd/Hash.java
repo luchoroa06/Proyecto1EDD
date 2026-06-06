@@ -79,7 +79,9 @@ package proyecto1edd;
     public String imprimir(){
         String neurotransmisores = "";
         for(int i = 0; i < 200; i++){
-            neurotransmisores += this.hash[i].imprimir() + "\n";   // Se concatenan todos los espacios
+            if(!this.hash[i].imprimir().equals("")){
+                neurotransmisores += this.hash[i].imprimir() + "\n";      
+            }      // Se conectan todos los espacios
         }
         return neurotransmisores;
     }
